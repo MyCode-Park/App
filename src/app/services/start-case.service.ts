@@ -1,83 +1,76 @@
-import { HttpClient, HttpParams } from '@angular/common/http';
-import { Injectable } from '@angular/core';
-import { Router } from '@angular/router';
-import { Model } from '@flowable/forms';
-import { BehaviorSubject } from 'rxjs';
-import { mergeMap } from 'rxjs/operators';
-import { apis } from '../consts/services';
-import { Case, CaseDefinitionResponse } from '../models/case';
-import { FlowForm } from '../models/forms';
+import { HttpClient, HttpParams } from "@angular/common/http";
+import { Injectable } from "@angular/core";
+import { Router } from "@angular/router";
+import { Model } from "@flowable/forms";
+import { BehaviorSubject } from "rxjs";
+import { mergeMap } from "rxjs/operators";
+import { apis } from "../consts/services";
+import { Case, CaseDefinitionResponse } from "../models/case";
+import { FlowForm } from "../models/forms";
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: "root",
 })
 export class StartCaseService {
-
-  public startCaseForm : BehaviorSubject<Case | null> = new BehaviorSubject<Case | null>(null);
+  public startCaseForm: BehaviorSubject<Case | null> =
+    new BehaviorSubject<Case | null>(null);
   private caseDef = new Case();
 
+  constructor(private router: Router, private http: HttpClient) {}
 
-  constructor( private router: Router,
-    private http: HttpClient) { }
+  startCase(caseKey: string) {
+    const params = new HttpParams().set("key", caseKey);
+    //  .set('latest',true);
 
-  
+    this.http
+      .get<CaseDefinitionResponse>(apis.CASE_DEFS, {
+        params: params,
+      })
+      .pipe(
+        mergeMap((resp: CaseDefinitionResponse) =>
+          //this.http.get<FlowForm>(apis.CASE_START_FORM+"/"+resp.data[0].id+"/start-form")
+          this.getForm(resp)
+        )
+      )
+      .subscribe((startForm: FlowForm) => {
+        console.log(startForm);
 
-    startCase(caseKey: string){
-      const params = new HttpParams()
-       .set('key', caseKey);
-      //  .set('latest',true);
-  
-      this.http.get<CaseDefinitionResponse>(apis.CASE_DEFS,
-                   {
-                     params: params
-                   })
-                   .pipe(
-                     mergeMap((resp: CaseDefinitionResponse) => 
-                        //this.http.get<FlowForm>(apis.CASE_START_FORM+"/"+resp.data[0].id+"/start-form")
-                        this.getForm(resp)
-                     )
-                   )
-                   .subscribe(
-                     (startForm: FlowForm) =>{
-                       console.log(startForm)
-                       
-                       this.caseDef.form = startForm;
-                       
-                       this.startCaseForm.next(this.caseDef);
-                     }
-                   )
-                  
-                
-            
-    }
+        this.caseDef.form = startForm;
 
+        this.startCaseForm.next(this.caseDef);
+      });
+  }
 
-    getForm(resp: CaseDefinitionResponse){
-      this.caseDef.id = resp.data[0].id;
-      return this.http.get<FlowForm>(apis.CASE_START_FORM+"/"+resp.data[0].id+"/start-form")
-    }
+  getForm(resp: CaseDefinitionResponse) {
+    this.caseDef.id = resp.data[0].id;
+    return this.http.get<FlowForm>(
+      apis.CASE_START_FORM + "/" + resp.data[0].id + "/start-form"
+    );
+  }
 
-    submitCase(caseDefId: string | undefined, payload: Model.Payload, result: any, navigationUrl?: string, outcome?: string) {
+  submitCase(
+    caseDefId: string | undefined,
+    payload: Model.Payload,
+    result: any,
+    navigationUrl?: string,
+    outcome?: string
+  ) {
+    const payloadObj = {
+      values: payload,
+      outcome: outcome,
+      caseDefinitionId: caseDefId,
+    };
 
-      const payloadObj = {
+    console.log("payload", payloadObj);
+
+    this.http
+      .post(apis.START_CASE, {
         values: payload,
         outcome: outcome,
-        caseDefinitionId: caseDefId
-      }
-
-      console.log('payload', payloadObj);
-
-      this.http.post(apis.START_CASE,{
-        
-          values: payload,
-          outcome: outcome,
-          caseDefinitionId: caseDefId
-        
-      }).subscribe(
-        (response: any) =>{
-          this.router.navigate(["/taskQueue"]);
-        }
-      )
-      
-    }
+        caseDefinitionId: caseDefId,
+      })
+      .subscribe((response: any) => {
+        this.router.navigate(["/taskQueue"]);
+      });
   }
+}

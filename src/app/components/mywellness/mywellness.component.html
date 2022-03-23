@@ -6,9 +6,22 @@
         <div fxFlex="60"  fxFlex.xs="55">
             <mat-card class="my-card"> 
                 <mat-card-title>{{userInfo.displayName}}</mat-card-title>
-               
             </mat-card>
+            <div class="content" fxLayout="row wrap" fxLayout.xs="column" fxFlexFill fxLayoutAlign="stretch flex-start">
+
+                <div fxFlex="50"  fxFlex.xs="55">
+                    <mat-card class="my-card"> 
+                        <mat-card-title>{{userInfo.displayName}}</mat-card-title>
+                    </mat-card>
+                </div>
+                <div fxFlex="50"  fxFlex.xs="55">
+                    <mat-card class="my-card"> 
+                        <mat-card-title>{{userInfo.displayName}}</mat-card-title>   
+                    </mat-card>
+                </div>
+            </div>
         </div>
+       
 
 
         <div fxFlex="40"  fxFlex.xs="55" fxFlexFill>
@@ -16,7 +29,6 @@
                <img src="/assets/images/COVID-19_StopSpread_Avoid_ENG_1200x1200.png"  style="align-items: center;" height="500" width="500"/>
             </mat-card>
         </div>
-        
     </div>
    
 </div>
