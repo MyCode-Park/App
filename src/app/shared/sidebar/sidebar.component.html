@@ -35,15 +35,27 @@
       <mat-list-item class="ui-element" routerLink="/loanCase" routerLinkActive="active">
         <div class="circle"></div>Loan Case
       </mat-list-item>
+    </div>
+
+    <mat-list-item (click)="openUiElements()">
+      <mat-icon>filter_none</mat-icon> Orders
+    </mat-list-item>
+    <div>
       <mat-list-item class="ui-element" routerLink="/newOrder" routerLinkActive="active">
         <div class="circle"></div>New Order
       </mat-list-item>
+    </div>
+
+    <mat-list-item (click)="openUiElements()">
+      <mat-icon>filter_none</mat-icon> Queues
+    </mat-list-item>
+    <div>
       <mat-list-item class="ui-element" routerLink="/taskQueue" routerLinkActive="active">
         <div class="circle"></div>Task Queue
       </mat-list-item>
-     
     </div>
 </mat-list>
+
 
 
 <p class="sidebar-title">Help</p>
