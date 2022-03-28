@@ -11,6 +11,9 @@ import { AuthService } from 'src/app/services/auth.service';
 export class MywellnessComponent implements OnInit {
 
   userInfo: User | null = null;
+  dataObject = {
+    name: ''
+  }
   
   
 

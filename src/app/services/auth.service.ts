@@ -57,7 +57,7 @@ export class AuthService {
         .set('username', username)
         .set('password', password);
   
-      console.log(payload);
+      console.log('login', payload);
   
       this.http.post(apis.LOGIN, payload)
       .subscribe(

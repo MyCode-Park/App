@@ -10,6 +10,8 @@ import { TaskFormComponent } from './components/task-page/task-form/task-form.co
 import { TaskPageComponent } from './components/task-page/task-page.component';
 import { NewOrderComponent } from './components/new-order/new-order.component';
 import { LoanCaseComponent } from './components/loan-case/loan-case.component';
+import { CustomerDataComponent } from './components/customer-data/customer-data.component';
+import { TravelRequestComponent } from './components/travel-request/travel-request.component';
 
 import { AuthGuard } from './helpers/auth.guard';
 
@@ -35,7 +37,18 @@ const routes: Routes = [
     canActivate: [AuthGuard]
 
   },
- 
+  {
+    path: 'customerData',
+    component: CustomerDataComponent,
+    canActivate: [AuthGuard]
+
+  },
+  {
+    path: 'travelRequest',
+    component: TravelRequestComponent,
+    canActivate: [AuthGuard]
+
+  },
   {
     path: 'taskQueue',
     component: TaskPageComponent,

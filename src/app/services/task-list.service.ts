@@ -19,7 +19,7 @@ export class TaskListService {
   getTasks(startIndex: number, batchSize: number){
     const params = new HttpParams()
     .set('start', startIndex)
-    .set('size',10);
+    // .set('size',10);
     this.http.get<TaskList>(apis.TASK_LIST,{
       params: params
     }).subscribe(

@@ -35,13 +35,13 @@ export class TaskTableComponent implements OnInit {
 
   taskListSub = this.taskListService.taskListSubject.subscribe(
     (response: TaskList | null)=>{
-      console.log(response)
+      console.log('response', response)
       if(response != null){
         this.totalItems = response.total
         this.sortStr = response.sort
         this.order = response.order
         this.dataSource.data = response['data']
-        console.log(this.tasks)
+        console.log('Task', this.tasks)
       }
 
     }

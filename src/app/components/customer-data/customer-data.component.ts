@@ -7,13 +7,12 @@ import { FlowForm } from 'src/app/models/forms';
 import { StartCaseService } from 'src/app/services/start-case.service';
 
 @Component({
-  selector: 'app-new-loan',
-  templateUrl: './new-loan.component.html',
-  styleUrls: ['./new-loan.component.scss']
+  selector: 'app-customer-data',
+  templateUrl: './customer-data.component.html',
+  styleUrls: ['./customer-data.component.scss']
 })
-export class NewLoanComponent implements OnInit {
+export class CustomerDataComponent implements OnInit {
 
-  
   props: any = null
   private caseDefId : string | undefined = "";
 
@@ -40,7 +39,7 @@ export class NewLoanComponent implements OnInit {
  
            onOutcomePressed: (payload: Model.Payload, result: any, navigationUrl?: string, outcomeConfig?: Model.ResolvedColumn) => {
              console.log(payload);
-             console.log("outcome ",outcomeConfig)
+             console.log("outcome",outcomeConfig)
              //Make the API Call to Create a Case
              this.caseService.submitCase(this.caseDefId,payload,navigationUrl,outcomeConfig?.value);
  
@@ -52,7 +51,7 @@ export class NewLoanComponent implements OnInit {
   )
 
   ngOnInit(): void {
-    this.caseService.startCase("loanAppCase");
+    this.caseService.startCase("customerCase");
   }
 
 }

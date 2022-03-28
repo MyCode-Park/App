@@ -6,14 +6,15 @@ import { Case } from 'src/app/models/case';
 import { FlowForm } from 'src/app/models/forms';
 import { StartCaseService } from 'src/app/services/start-case.service';
 
-@Component({
-  selector: 'app-new-loan',
-  templateUrl: './new-loan.component.html',
-  styleUrls: ['./new-loan.component.scss']
-})
-export class NewLoanComponent implements OnInit {
 
-  
+@Component({
+  selector: 'app-travel-request',
+  templateUrl: './travel-request.component.html',
+  styleUrls: ['./travel-request.component.scss']
+})
+export class TravelRequestComponent implements OnInit {
+
+
   props: any = null
   private caseDefId : string | undefined = "";
 
@@ -52,7 +53,7 @@ export class NewLoanComponent implements OnInit {
   )
 
   ngOnInit(): void {
-    this.caseService.startCase("loanAppCase");
+    this.caseService.startCase("travelRequest");
   }
 
 }

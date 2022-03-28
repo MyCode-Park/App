@@ -48,6 +48,8 @@ import { TaskTableComponent } from './components/task-page/task-table/task-table
 import { TaskFormComponent } from './components/task-page/task-form/task-form.component';
 import { NewOrderComponent } from './components/new-order/new-order.component';
 import { LoanCaseComponent } from './components/loan-case/loan-case.component';
+import { CustomerDataComponent } from './components/customer-data/customer-data.component';
+import { TravelRequestComponent } from './components/travel-request/travel-request.component';
 
 @NgModule({
   declarations: [
@@ -70,7 +72,9 @@ import { LoanCaseComponent } from './components/loan-case/loan-case.component';
     TaskTableComponent,
     TaskFormComponent,
     NewOrderComponent,
-    LoanCaseComponent    
+    LoanCaseComponent,
+    CustomerDataComponent,
+    TravelRequestComponent    
   ],
   imports: [
     BrowserModule,
