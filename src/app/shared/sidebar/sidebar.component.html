@@ -38,9 +38,6 @@
       <mat-list-item class="ui-element" routerLink="/customerData" routerLinkActive="active">
         <div class="circle"></div>Customer Data
       </mat-list-item>
-      <mat-list-item class="ui-element" routerLink="/travelRequest" routerLinkActive="active">
-        <div class="circle"></div>Travel Request
-      </mat-list-item>
     </div>
 
     <mat-list-item (click)="openUiElements()">
@@ -53,7 +50,16 @@
     </div>
 
     <mat-list-item (click)="openUiElements()">
-      <mat-icon>filter_none</mat-icon> Queues
+      <mat-icon>filter_none</mat-icon> Travel
+    </mat-list-item>
+    <div>
+      <mat-list-item class="ui-element" routerLink="/travelRequest" routerLinkActive="active">
+        <div class="circle"></div>Travel Request
+      </mat-list-item>
+    </div>
+
+    <mat-list-item (click)="openUiElements()">
+      <mat-icon>filter_none</mat-icon> Collections
     </mat-list-item>
     <div>
       <mat-list-item class="ui-element" routerLink="/taskQueue" routerLinkActive="active">
