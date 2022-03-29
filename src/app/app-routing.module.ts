@@ -12,6 +12,7 @@ import { NewOrderComponent } from './components/new-order/new-order.component';
 import { LoanCaseComponent } from './components/loan-case/loan-case.component';
 import { CustomerDataComponent } from './components/customer-data/customer-data.component';
 import { TravelRequestComponent } from './components/travel-request/travel-request.component';
+import { EventChannelComponent } from './components/event-channel/event-channel.component';
 
 import { AuthGuard } from './helpers/auth.guard';
 
@@ -52,6 +53,12 @@ const routes: Routes = [
   {
     path: 'taskQueue',
     component: TaskPageComponent,
+    canActivate: [AuthGuard]
+
+  },
+  {
+    path: 'eventChannel',
+    component: EventChannelComponent,
     canActivate: [AuthGuard]
 
   },

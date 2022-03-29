@@ -50,6 +50,7 @@ import { NewOrderComponent } from './components/new-order/new-order.component';
 import { LoanCaseComponent } from './components/loan-case/loan-case.component';
 import { CustomerDataComponent } from './components/customer-data/customer-data.component';
 import { TravelRequestComponent } from './components/travel-request/travel-request.component';
+import { EventChannelComponent } from './components/event-channel/event-channel.component';
 
 @NgModule({
   declarations: [
@@ -74,7 +75,8 @@ import { TravelRequestComponent } from './components/travel-request/travel-reque
     NewOrderComponent,
     LoanCaseComponent,
     CustomerDataComponent,
-    TravelRequestComponent    
+    TravelRequestComponent,
+    EventChannelComponent    
   ],
   imports: [
     BrowserModule,
